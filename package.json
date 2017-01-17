@@ -1,0 +1,31 @@
+{
+  "name": "react-native-webview-richeditor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "rnpm": {
+    "assets": [
+      "assets/fonts"
+    ]
+  },
+  "dependencies": {
+    "react-native-image-picker": "^0.25.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IllegalCreed/react-native-webview-richeditor.git"
+  },
+  "keywords": [
+    "richeditor",
+    "webview"
+  ],
+  "author": "illegal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IllegalCreed/react-native-webview-richeditor/issues"
+  },
+  "homepage": "https://github.com/IllegalCreed/react-native-webview-richeditor#readme"
+}

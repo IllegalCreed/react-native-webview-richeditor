@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style type="text/css">
+		html {
+			height: 100%;
+		}
+
+		body {
+			min-height: 100%;
+			overflow: auto;
+		}
+
+		#editor {
+			display: block;
+			position: static;
+			min-height: 600px;
+			overflow: auto;
+
+			-webkit-user-select: auto !important;
+			-webkit-user-modify: read-write !important;
+
+			outline: 0px solid transparent;
+		}
+
+		#editor[placeholder]:empty:not(:focus):before {
+			content: attr(placeholder);
+			opacity: .5;
+		}
+
+
+		/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+
+		/* Document
+			========================================================================== */
+
+		/**
+		* 1. Change the default font family in all browsers (opinionated).
+		* 2. Correct the line height in all browsers.
+		* 3. Prevent adjustments of font size after orientation changes in
+		*    IE on Windows Phone and in iOS.
+		*/
+
+		html {
+			font-family: sans-serif; /* 1 */
+			line-height: 1.15; /* 2 */
+			-ms-text-size-adjust: 100%; /* 3 */
+			-webkit-text-size-adjust: 100%; /* 3 */
+		}
+
+		/* Sections
+			========================================================================== */
+
+		/**
+		* Remove the margin in all browsers (opinionated).
+		*/
+
+		body {
+			margin: 0;
+		}
+
+		/**
+		* Add the correct display in IE 9-.
+		*/
+
+		article,
+		aside,
+		footer,
+		header,
+		nav,
+		section {
+			display: block;
+		}
+
+		/**
+		* Correct the font size and margin on `h1` elements within `section` and
+		* `article` contexts in Chrome, Firefox, and Safari.
+		*/
+
+		h1 {
+			font-size: 2em;
+			margin: .2em 0;
+		}
+
+		h2 {
+			font-size: 1.5em;
+			margin: .2em 0;
+		}
+
+		h3 {
+			font-size: 1.17em;
+			margin: .2em 0;
+		}
+
+		h4 {
+			font-size: 1em;
+			margin: .2em 0;
+		}
+
+		h5 {
+			font-size: .83em;
+			margin: .2em 0;
+		}
+
+		h6 {
+			font-size: .75em;
+			margin: .2em 0;
+		}
+
+		/* Grouping content
+			========================================================================== */
+
+		/**
+		* Add the correct display in IE 9-.
+		* 1. Add the correct display in IE.
+		*/
+
+		figcaption,
+		figure,
+		main { /* 1 */
+			display: block;
+		}
+
+		/**
+		* Add the correct margin in IE 8.
+		*/
+
+		figure {
+			margin: 1em 40px;
+		}
+
+		/**
+		* 1. Add the correct box sizing in Firefox.
+		* 2. Show the overflow in Edge and IE.
+		*/
+
+		hr {
+			box-sizing: content-box; /* 1 */
+			height: 0; /* 1 */
+			overflow: visible; /* 2 */
+		}
+
+		/**
+		* 1. Correct the inheritance and scaling of font size in all browsers.
+		* 2. Correct the odd `em` font sizing in all browsers.
+		*/
+
+		pre {
+			font-family: monospace, monospace; /* 1 */
+			font-size: 1em; /* 2 */
+		}
+
+		/* Text-level semantics
+			========================================================================== */
+
+		/**
+		* 1. Remove the gray background on active links in IE 10.
+		* 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+		*/
+
+		a {
+			background-color: transparent; /* 1 */
+			-webkit-text-decoration-skip: objects; /* 2 */
+		}
+
+		/**
+		* Remove the outline on focused links when they are also active or hovered
+		* in all browsers (opinionated).
+		*/
+
+		a:active,
+		a:hover {
+			outline-width: 0;
+		}
+
+		/**
+		* 1. Remove the bottom border in Firefox 39-.
+		* 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+		*/
+
+		abbr[title] {
+			border-bottom: none; /* 1 */
+			text-decoration: underline; /* 2 */
+			text-decoration: underline dotted; /* 2 */
+		}
+
+		/**
+		* Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+		*/
+
+		b,
+		strong {
+			font-weight: inherit;
+		}
+
+		/**
+		* Add the correct font weight in Chrome, Edge, and Safari.
+		*/
+
+		b,
+		strong {
+			font-weight: bolder;
+		}
+
+		/**
+		* 1. Correct the inheritance and scaling of font size in all browsers.
+		* 2. Correct the odd `em` font sizing in all browsers.
+		*/
+
+		code,
+		kbd,
+		samp {
+			font-family: monospace, monospace; /* 1 */
+			font-size: 1em; /* 2 */
+		}
+
+		/**
+		* Add the correct font style in Android 4.3-.
+		*/
+
+		dfn {
+			font-style: italic;
+		}
+
+		/**
+		* Add the correct background and color in IE 9-.
+		*/
+
+		mark {
+			background-color: #ff0;
+			color: #000;
+		}
+
+		/**
+		* Add the correct font size in all browsers.
+		*/
+
+		small {
+			font-size: 80%;
+		}
+
+		/**
+		* Prevent `sub` and `sup` elements from affecting the line height in
+		* all browsers.
+		*/
+
+		sub,
+		sup {
+			font-size: 75%;
+			line-height: 0;
+			position: relative;
+		}
+
+		sub {
+			bottom: -0.25em;
+			vertical-align: sub;
+		}
+
+		sup {
+			top: -0.5em;
+			vertical-align: super;
+		}
+
+		/* Embedded content
+			========================================================================== */
+
+		/**
+		* Add the correct display in IE 9-.
+		*/
+
+		audio,
+		video {
+			display: inline-block;
+		}
+
+		/**
+		* Add the correct display in iOS 4-7.
+		*/
+
+		audio:not([controls]) {
+			display: none;
+			height: 0;
+		}
+
+		/**
+		* Remove the border on images inside links in IE 10-.
+		*/
+
+		img {
+			border-style: none;
+			width:100%;
+		}
+
+		/**
+		* Hide the overflow in IE.
+		*/
+
+		svg:not(:root) {
+			overflow: hidden;
+		}
+
+		/* Forms
+			========================================================================== */
+
+		/**
+		* 1. Change the font styles in all browsers (opinionated).
+		* 2. Remove the margin in Firefox and Safari.
+		*/
+
+		button,
+		input,
+		optgroup,
+		select,
+		textarea {
+			font-family: sans-serif; /* 1 */
+			font-size: 100%; /* 1 */
+			line-height: 1.15; /* 1 */
+			margin: 0; /* 2 */
+		}
+
+		/**
+		* Show the overflow in IE.
+		* 1. Show the overflow in Edge.
+		*/
+
+		button,
+		input { /* 1 */
+			overflow: visible;
+		}
+
+		/**
+		* Remove the inheritance of text transform in Edge, Firefox, and IE.
+		* 1. Remove the inheritance of text transform in Firefox.
+		*/
+
+		button,
+		select { /* 1 */
+			text-transform: none;
+		}
+
+		/**
+		* 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+		*    controls in Android 4.
+		* 2. Correct the inability to style clickable types in iOS and Safari.
+		*/
+
+		button,
+		html [type="button"], /* 1 */
+		[type="reset"],
+		[type="submit"] {
+			-webkit-appearance: button; /* 2 */
+		}
+
+		/**
+		* Remove the inner border and padding in Firefox.
+		*/
+
+		button::-moz-focus-inner,
+		[type="button"]::-moz-focus-inner,
+		[type="reset"]::-moz-focus-inner,
+		[type="submit"]::-moz-focus-inner {
+			border-style: none;
+			padding: 0;
+		}
+
+		/**
+		* Restore the focus styles unset by the previous rule.
+		*/
+
+		button:-moz-focusring,
+		[type="button"]:-moz-focusring,
+		[type="reset"]:-moz-focusring,
+		[type="submit"]:-moz-focusring {
+			outline: 1px dotted ButtonText;
+		}
+
+		/**
+		* Change the border, margin, and padding in all browsers (opinionated).
+		*/
+
+		fieldset {
+			border: 1px solid #c0c0c0;
+			margin: 0 2px;
+			padding: 0.35em 0.625em 0.75em;
+		}
+
+		/**
+		* 1. Correct the text wrapping in Edge and IE.
+		* 2. Correct the color inheritance from `fieldset` elements in IE.
+		* 3. Remove the padding so developers are not caught out when they zero out
+		*    `fieldset` elements in all browsers.
+		*/
+
+		legend {
+			box-sizing: border-box; /* 1 */
+			color: inherit; /* 2 */
+			display: table; /* 1 */
+			max-width: 100%; /* 1 */
+			padding: 0; /* 3 */
+			white-space: normal; /* 1 */
+		}
+
+		/**
+		* 1. Add the correct display in IE 9-.
+		* 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+		*/
+
+		progress {
+			display: inline-block; /* 1 */
+			vertical-align: baseline; /* 2 */
+		}
+
+		/**
+		* Remove the default vertical scrollbar in IE.
+		*/
+
+		textarea {
+			overflow: auto;
+		}
+
+		/**
+		* 1. Add the correct box sizing in IE 10-.
+		* 2. Remove the padding in IE 10-.
+		*/
+
+		[type="checkbox"],
+		[type="radio"] {
+			box-sizing: border-box; /* 1 */
+			padding: 0; /* 2 */
+		}
+
+		/**
+		* Correct the cursor style of increment and decrement buttons in Chrome.
+		*/
+
+		[type="number"]::-webkit-inner-spin-button,
+		[type="number"]::-webkit-outer-spin-button {
+			height: auto;
+		}
+
+		/**
+		* 1. Correct the odd appearance in Chrome and Safari.
+		* 2. Correct the outline style in Safari.
+		*/
+
+		[type="search"] {
+			-webkit-appearance: textfield; /* 1 */
+			outline-offset: -2px; /* 2 */
+		}
+
+		/**
+		* Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+		*/
+
+		[type="search"]::-webkit-search-cancel-button,
+		[type="search"]::-webkit-search-decoration {
+			-webkit-appearance: none;
+		}
+
+		/**
+		* 1. Correct the inability to style clickable types in iOS and Safari.
+		* 2. Change font properties to `inherit` in Safari.
+		*/
+
+		::-webkit-file-upload-button {
+			-webkit-appearance: button; /* 1 */
+			font: inherit; /* 2 */
+		}
+
+		/* Interactive
+			========================================================================== */
+
+		/*
+		* Add the correct display in IE 9-.
+		* 1. Add the correct display in Edge, IE, and Firefox.
+		*/
+
+		details, /* 1 */
+		menu {
+			display: block;
+		}
+
+		/*
+		* Add the correct display in all browsers.
+		*/
+
+		summary {
+			display: list-item;
+		}
+
+		/* Scripting
+			========================================================================== */
+
+		/**
+		* Add the correct display in IE 9-.
+		*/
+
+		canvas {
+			display: inline-block;
+		}
+
+		/**
+		* Add the correct display in IE.
+		*/
+
+		template {
+			display: none;
+		}
+
+		/* Hidden
+			========================================================================== */
+
+		/**
+		* Add the correct display in IE 10-.
+		*/
+
+		[hidden] {
+			display: none;
+		}
+
+		.code {
+			padding-top: 10px;
+			padding-right: 15px;
+			padding-bottom: 10px;
+			padding-left: 15px;
+			margin-bottom: 20px;
+			background-color: whitesmoke;
+			border-left-width: 4px;
+			border-left-style: solid;
+			border-left-color: rgb(153, 153, 153);
+			word-break: break-word;
+			font-size: 15px;
+			font-weight: normal;
+			line-height: 30px;
+		}
+
+		.code:before, .code:after{
+			content:""
+		}
+
+		p {
+			display: block;
+			-webkit-margin-before: 0em;
+			-webkit-margin-after: 0em;
+			-webkit-margin-start: 0px;
+			-webkit-margin-end: 0px;
+		}
+	</style>
+</head>
+
+<body>
+  <div id="editor" contentEditable="true" autocomplete="off"></div>
+  <script type="text/javascript">
+    (function (cursorManager) {
+
+      //From: http://www.w3.org/TR/html-markup/syntax.html#syntax-elements
+      var voidNodeTags = ['AREA', 'BASE', 'BR', 'COL', 'EMBED', 'HR', 'IMG', 'INPUT', 'KEYGEN', 'LINK', 'MENUITEM', 'META', 'PARAM', 'SOURCE', 'TRACK', 'WBR', 'BASEFONT', 'BGSOUND', 'FRAME', 'ISINDEX'];
+
+      //From: http://stackoverflow.com/questions/237104/array-containsobj-in-javascript
+      Array.prototype.contains = function (obj) {
+        var i = this.length;
+        while (i--) {
+          if (this[i] === obj) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      //Basic idea from: http://stackoverflow.com/questions/19790442/test-if-an-element-can-contain-text
+      function canContainText(node) {
+        if (node.nodeType == 1) { //is an element node
+          return !voidNodeTags.contains(node.nodeName);
+        } else { //is not an element node
+          return false;
+        }
+      };
+
+      function getLastChildElement(el) {
+        var lc = el.lastChild;
+        while (lc && lc.nodeType != 1) {
+          if (lc.previousSibling)
+            lc = lc.previousSibling;
+          else
+            break;
+        }
+        return lc;
+      }
+
+      //Based on Nico Burns's answer
+      cursorManager.setEndOfContenteditable = function (contentEditableElement) {
+
+        while (getLastChildElement(contentEditableElement) &&
+          canContainText(getLastChildElement(contentEditableElement))) {
+          contentEditableElement = getLastChildElement(contentEditableElement);
+        }
+
+        var range, selection;
+        if (document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
+        {
+          range = document.createRange();//Create a range (a range is a like the selection but invisible)
+          range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
+          range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+          selection = window.getSelection();//get the selection object (allows you to change selection)
+          selection.removeAllRanges();//remove any selections already made
+          selection.addRange(range);//make the range you have just created the visible selection
+        }
+        else if (document.selection)//IE 8 and lower
+        {
+          range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+          range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
+          range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+          range.select();//Select the range (make it the visible selection
+        }
+      }
+
+    } (window.cursorManager = window.cursorManager || {}));
+
+    (function () {
+      if (postMessage) {
+        var editor = document.getElementById('editor');
+
+        var enabledEditingItems = function () {
+          var states = [];
+          if (document.queryCommandState('bold')) {
+            states.push('BOLD')
+          }
+          if (document.queryCommandState('italic')) {
+            states.push('ITALIC');
+          }
+          if (document.queryCommandState('insertOrderedList')) {
+            states.push('ORDERLIST');
+          }
+          if (document.queryCommandState('insertUnorderedList')) {
+            states.push('UNORDERLIST');
+          }
+          var formatBlock = document.queryCommandValue('formatBlock');
+          if (formatBlock.length > 0) {
+            states.push(formatBlock.toUpperCase());
+          }
+          postMessage(JSON.stringify({
+            command: 'STATES',
+            states: states
+          }));
+        }
+
+        var callbackhandler = function () {
+          return function () {
+            postMessage(JSON.stringify({
+              command: 'HTML',
+              html: editor.innerHTML
+            }));
+          }
+        }
+        var timeoutProcess = undefined;
+        var callback = function () {
+          if (timeoutProcess) {
+            clearTimeout(timeoutProcess);
+          }
+          timeoutProcess = setTimeout(callbackhandler(), 800);
+          enabledEditingItems();
+        }
+        editor.addEventListener("input", callback);
+        editor.addEventListener("keyup", function (e) {
+          var KEY_LEFT = 37, KEY_UP = 38, KEY_RIGHT = 39, KEY_DOWN = 40;
+          if (e.which == KEY_LEFT || e.which == KEY_UP || e.which == KEY_RIGHT || e.which == KEY_DOWN) {
+            enabledEditingItems();
+          }
+        });
+
+
+        document.addEventListener('message', function (e) {
+          var message = e.data;
+          postMessage(message);
+
+          if (message == 'init') {
+            postMessage('loaded');
+            return
+          }
+
+          var command = null;
+          try {
+            command = JSON.parse(message);
+            postMessage('JSONParse:OK!');
+          }
+          catch (error) {
+            postMessage('JSONParse:FAILED!');
+            return;
+          }
+
+          switch (command.command) {
+            case 'insertLocalImage':
+              var localimg = document.createElement('img');
+              localimg.setAttribute("id", command.id);
+              localimg.setAttribute("src", command.source);
+              document.execCommand('insertHTML', false, localimg.outerHTML);
+
+              cursorManager.setEndOfContenteditable(editor);
+              break;
+            case 'undo':
+              document.execCommand('undo', false, null);
+              break;
+            case 'redo':
+              document.execCommand('redo', false, null);
+              break;
+            case 'bold':
+              document.execCommand('bold', false, null);
+              break;
+            case 'italic':
+              document.execCommand('italic', false, null);
+              break;
+            case 'indent':
+              document.execCommand('indent', false, null);
+              break;
+            case 'outdent':
+              document.execCommand('outdent', false, null);
+              break;
+            case 'heading1':
+              document.execCommand('formatBlock', false, '<h1>');
+              break;
+            case 'heading2':
+              document.execCommand('formatBlock', false, '<h2>');
+              break;
+            case 'heading3':
+              document.execCommand('formatBlock', false, '<h3>');
+              break;
+            case 'heading4':
+              document.execCommand('formatBlock', false, '<h4>');
+              break;
+            case 'quote':
+              if (window.getSelection().getRangeAt(0).startContainer.nodeName == '#text') {
+                document.execCommand('formatBlock', false, '<blockquote>');
+                window.getSelection().focusNode.parentNode.className = 'code';
+              }
+              break;
+            case 'unorderList':
+              document.execCommand('insertUnorderedList', false, null);
+              break;
+            case 'orderList':
+              document.execCommand('insertOrderedList', false, null);
+              break;
+            case 'setHtml':
+              editor.innerHTML = command.html;
+              return;
+            case 'setPlaceholder':
+              editor.setAttribute("placeholder", command.placeholder);
+              return;
+            case 'removeFormat':
+              document.execCommand('removeFormat', false, null);
+              var formatBlock = document.queryCommandValue('formatBlock');
+              if (formatBlock.length > 0) {
+                document.execCommand('formatBlock', false, 'p');
+              }
+              break;
+          }
+          enabledEditingItems();
+        });
+      }
+    } ());
+  </script>
+</body>
+
+</html>
