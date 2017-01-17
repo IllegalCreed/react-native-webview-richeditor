@@ -193,6 +193,7 @@ export default class WebViewRichEditor extends Component {
 
   onMessage(e) {
     let message = e.nativeEvent.data;
+		console.log(message);
 
     if (message == 'loaded' && this.initIntervalID) {
       clearInterval(this.initIntervalID);
@@ -210,6 +211,7 @@ export default class WebViewRichEditor extends Component {
 
     switch (command.command) {
       case 'STATES':
+				console.log(command.states);
         this.setState({ editorStates: command.states });
         break;
       case 'HTML':
@@ -248,11 +250,8 @@ export default class WebViewRichEditor extends Component {
                 };
                 ImagePicker.showImagePicker(options, (response) => {
                   if (response.didCancel) {
-                    console.log('User cancelled photo picker');
                   } else if (response.error) {
-                    console.log('ImagePicker Error: ', response.error);
                   } else if (response.customButton) {
-                    console.log('User tapped custom button: ', response.customButton);
                   } else {
                     let timestamp = new Date().getTime().toString();
                     let base64 = 'data:image/png;base64,' + response.data;
