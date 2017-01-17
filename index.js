@@ -343,5 +343,3 @@ const styles = StyleSheet.create({
     fontFamily: "richeditor",
   }
 });
-
-AppRegistry.registerComponent('RNWebViewRichEditor2', () => RNWebViewRichEditor2);
