@@ -255,7 +255,13 @@ export default class WebViewRichEditor extends Component {
                   } else {
                     let timestamp = new Date().getTime().toString();
                     let base64 = 'data:image/png;base64,' + response.data;
-                    this.postMessage(item.command + ':' + timestamp + ':' + base64);
+                    this.postMessage(
+                      JSON.stringify({
+                        command: 'insertLocalImage',
+                        id: timestamp,
+                        source: base64
+                      })
+                    );
                   }
                 });
 
