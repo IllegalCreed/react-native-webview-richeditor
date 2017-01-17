@@ -267,7 +267,9 @@ export default class WebViewRichEditor extends Component {
               case 'BLOCKQUOTE':
                 for (let state of this.state.editorStates) {
                   if (state == item.name) {
-                    this.postMessage('command:removeFormat');
+                    this.postMessage(JSON.stringify({
+                      command: "removeFormat"
+                    }));
                     return;
                   }
                 }
