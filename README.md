@@ -39,6 +39,8 @@ react-native link
 android:windowSoftInputMode="stateHidden|adjustPan"
 ...
 ```
+### 关于安卓打包release版后无法运行的问题，
+找到node_modules/react-native-webview-richeditor/richeditor.html，复制到android/app/src/main/assets/html/ 路径下（没有就手动创建）
 
 另外image-picker需要配置一些权限
 ```
