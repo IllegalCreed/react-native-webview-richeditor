@@ -1,6 +1,6 @@
 {
   "name": "react-native-webview-richeditor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,9 @@
   ],
   "author": "illegal",
   "license": "MIT",
+  "dependencies": {
+    "react-native-image-picker": "0.27.1"
+  },
   "bugs": {
     "url": "https://github.com/IllegalCreed/react-native-webview-richeditor/issues"
   },

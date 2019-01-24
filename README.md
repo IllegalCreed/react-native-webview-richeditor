@@ -4,18 +4,18 @@ ios和android通用的富文本编辑器，基于RN原生的webview实现，安�
 
 ## 安装
 
-这版编辑器包含插入图片功能，所以需要事先安装react-native-image-picker
-
-```
-npm install react-native-image-picker --save
-react-native link
-```
-之后就可以安装编辑器了
+这版编辑器包含插入图片功能，依赖了react-native-image-picker
 
 ```
 npm install react-native-webview-richeditor --save
+or
+yarn add react-native-webview-richeditor
+
 ```
-因为编辑器工具栏以来一些字体图标，所以需要安装字体文件
+
+
+
+因为编辑器工具栏依赖一些字体图标，所以需要安装字体文件
 将assets目录拷贝到目标工程的根目录下
 在package.json中添加如下配置
 
@@ -39,6 +39,8 @@ react-native link
 android:windowSoftInputMode="stateHidden|adjustPan"
 ...
 ```
+### 关于安卓打包release版后无法运行的问题，
+找到node_modules/react-native-webview-richeditor/richeditor.html，复制到android/app/src/main/assets/html/ 路径下（没有就手动创建）
 
 另外image-picker需要配置一些权限
 ```
